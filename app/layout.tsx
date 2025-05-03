@@ -1,33 +1,13 @@
-import Link from "next/link";
 import type { Metadata, Viewport } from "next";
+import Link from "next/link";
 import "/node_modules/flag-icons/css/flag-icons.min.css";
+
 import Analytics from "@/components/analytics";
 import Header from "@/components/header";
+import { Nexa } from "@/utils/fonts";
 
 import "the-new-css-reset/css/reset.css";
 import "./globals.scss";
-
-// global font-face
-import localFont from "next/font/local";
-const Nexa = localFont({
-  src: [
-    {
-      path: "../fonts/nexa_light.woff2",
-      weight: "200",
-    },
-    {
-      path: "../fonts/nexa_regular.woff2",
-      weight: "400",
-    },
-    {
-      path: "../fonts/nexa_bold.woff2",
-      weight: "800",
-    },
-  ],
-
-  style: "normal",
-  display: "swap",
-});
 
 // global metadata (default values)
 export const metadata: Metadata = {
@@ -54,7 +34,7 @@ export default function RootLayout({
   return (
     <html lang="pl" className={Nexa.className}>
       <body>
-        {process.env.NODE_ENV !== "development" && <Analytics />}
+        {process.env.NODE_ENV === "production" && <Analytics />}
 
         <header>
           <Header />
@@ -67,13 +47,14 @@ export default function RootLayout({
         <footer>
           <section>
             <p>
-              Stworzone z <span>💙</span> przez{" "}
+              Stworzone przez{" "}
               <Link href="https://github.com/Quanosek">Jakuba Kłało</Link>
             </p>
 
             <p>
-              Wszelkie prawa zastrzeżone &#169; 2023-{new Date().getFullYear()}{" "}
-              | <Link href="https://www.klalo.pl">domena klalo.pl</Link>
+              Wszelkie prawa zastrzeżone &#169; {new Date().getFullYear()}
+              {" | "}
+              <Link href="https://www.klalo.pl">domena klalo.pl</Link>
             </p>
           </section>
         </footer>

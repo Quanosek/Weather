@@ -1,8 +1,8 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
 import axios from "axios";
 
 import styles from "./header.module.scss";
@@ -173,7 +173,7 @@ export default function HeaderComponent() {
           id="check"
           type="checkbox"
           onClick={() => showMobileMenu(!mobileMenu)}
-          checked={mobileMenu}
+          defaultChecked={mobileMenu}
         />
         <span />
         <span />
